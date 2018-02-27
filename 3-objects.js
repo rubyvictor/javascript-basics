@@ -3,10 +3,19 @@ var assertEquals = require("./test-helper");
 /* ---------------------- EXERCISE 1 ---------------------- */
 // Define a function to list the properties of a JavaScript object. Go to the editor
 
-function listProperties() {}
+var person = {
+  name: "Tom Hanks",
+  age: 50,
+  rollno: 12
+};
 
-// assertEquals(listProperties({name: 'Tom Hanks'}), 'name')
-// assertEquals(listProperties({name: 'Tom Hanks', age: 50, rollno: 12}), 'name age rollno')
+function listProperties(person) {
+  var propertyName = Object.getOwnPropertyNames(person);
+  return propertyName.toString();
+}
+
+assertEquals(listProperties({name: 'Tom Hanks'}), 'name')
+assertEquals(listProperties({name: 'Tom Hanks', age: 50, rollno: 12}), 'name age rollno')
 
 // Sample Output: name,sclass,rollno
 
@@ -29,17 +38,28 @@ var books = [
     isAvailable: false
   }
 ];
-
+console.log(books.title);
 // 2.1 Define a function listTitles(booksArray) that takes in an array of book objects and returns an array of titles (strings)
-function listTitles(booksArray) {}
+function listTitles(booksArray) {
+ var result = "";
+  var titleArray = [];
+  for (var i in books){
+    if (booksArray.hasOwnProperty(i)){
+      result += books[i]+",";
+      titleArray.push(result);
 
-// assertEquals(listTitles(books), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
+    }
+  }
+  return titleArray;
+}
+
+assertEquals(listTitles(books), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
 
 // 2.2 Define a function listAuthors(booksArray) that takes in an array of book objects and returns an array of authors (strings)
 
 function listAuthors(booksArray) {}
 
-// assertEquals(listTitles(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
+// assertEquals(listAuthors(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
 
 // 2.3 Define a more general function listValues(booksArray, key) that takes in an array of book objects and returns an array of authors (strings)
 
