@@ -40,31 +40,30 @@ var books = [
 ];
 console.log(books.title);
 // 2.1 Define a function listTitles(booksArray) that takes in an array of book objects and returns an array of titles (strings)
-// function listTitles(booksArray) {
- 
-//   var result = "";
-//   var titleArray = [];
-//   for (var i in books){
-//     if (booksArray.hasOwnProperty(i)){
-//       result += booksArray[i];
-//       titleArray.push(result);
+function listTitles(booksArray) {
+ var result = [];
+  for (var property in books){
+   var titles = books[property].title.toString();
+   result.push(titles);
+ }
+ return result;
+}
 
-//     }
-//   }
-//   return titleArray.title;
-// }
-
-// assertEquals(listTitles(books), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
+assertEquals(listTitles(books), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
 
 // 2.2 Define a function listAuthors(booksArray) that takes in an array of book objects and returns an array of authors (strings)
 
-// function listAuthors(booksArray) {
-// var bookAuthor = [booksArray.author]
-// return bookAuthor[0]
+function listAuthors(booksArray) {
+var result = [];
+for (var property in books) {
+  var authors = books[property].author.toString();
+  result.push(authors);
+}
+return result;
 
-// }
+}
 
-// assertEquals(listAuthors(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
+assertEquals(listAuthors(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
 
 // 2.3 Define a more general function listValues(booksArray, key) that takes in an array of book objects and returns an array of authors (strings)
 
@@ -74,8 +73,17 @@ function listValues(booksArray, key) {}
 // assertEquals(listValues(books, 'title'), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
 
 // 2.4 Define a function getAvailableBooks(booksArray) that returns a list of available books
-
-// assertEquals(getAvailableBooks(books), ['The Road Ahead', 'Lord of the Rings'])
+function getAvailableBooks(booksArray){
+  var result = [];
+  for (var property in books) {
+    if (books[property].isAvailable == "true") {
+    var titles = books[property].title.toString();
+    result.push(titles);
+    }
+  }
+  return result;
+}
+assertEquals(getAvailableBooks(books), ['The Road Ahead', 'Lord of the Rings'])
 
 /* ---------------------- EXERCISE 3 ---------------------- */
 /* 3.1 Define an object named fluffycat with the following properties/methods:
