@@ -67,8 +67,14 @@ assertEquals(listAuthors(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
 
 // 2.3 Define a more general function listValues(booksArray, key) that takes in an array of book objects and returns an array of authors (strings)
 
-function listValues(booksArray, key) {}
-
+function listValues(booksArray, key) {
+var result = [];
+for (key in booksArray){
+  var authors = booksArray[key].author.toString();
+  result.push(authors);
+}
+return result;
+}
 // assertEquals(listValues(books, 'author'), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
 // assertEquals(listValues(books, 'title'), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
 
